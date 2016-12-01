@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# replace bibtex with html tags using search strings in replace.sed
+sed -r -f replace.sed < data/PapersLib-2016-06-23.bibtex \
+    > output/library.bibtex
+
+mkdir output/split
+
+# split into approximately 100 lines per file
+awk -v \
+    RS="}\n\n" 'BEGIN{n=1; i=0; nbp=100}{if (i++ == nbp) {i=0; n++} print $0"}" > "output/split/lib"n".bib"}' \
+    output/library.bibtex
