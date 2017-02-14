@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # replace bibtex with html tags using search strings in replace.sed
-sed -r -f replace.sed < data/PapersLib-2016-06-23.bibtex \
+sed -r -f replace.sed < data/PapersLib-2016-12-07.bibtex \
     > output/library.bibtex
 
 mkdir output/split
